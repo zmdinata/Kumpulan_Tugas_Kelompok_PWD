@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kumpulan Tugas Kelompok - P2 Boyyy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* CSS Reset & Basic Styling */
         :root {
@@ -154,16 +155,13 @@
             height: 100vh;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #1a1a1a, #0d0d0d); /* Default gradient */
-            /* --- PENAMBAHAN UNTUK BACKGROUND IMAGE --- */
-            background-image: url('P2.jpeg'); /* Ganti 'kelompok.jpg' dengan URL atau path gambar Anda */
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            background-image: url('P2.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* ------------------------------------------- */
         }
 
-        /* Overlay Hitam Transparan */
         #home::before {
             content: '';
             position: absolute;
@@ -171,23 +169,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.2); /* Hitam dengan opacity 20% */
-            z-index: 1; /* Di atas gambar, di bawah teks */
-            /* Animasi sebelumnya untuk lingkaran biru dihilangkan agar tidak bentrok */
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
-        /* Elemen dekoratif biru yang lebih kecil dan tidak menutupi gambar utama */
         #home::after {
             content: '';
             position: absolute;
             bottom: -70px;
             right: -70px;
-            width: 180px; /* Ukuran lebih kecil */
-            height: 180px; /* Ukuran lebih kecil */
-            background: rgba(0, 153, 255, 0.1); /* Biru dengan opacity rendah */
+            width: 180px;
+            height: 180px;
+            background: rgba(0, 153, 255, 0.1);
             border-radius: 50%;
-            filter: blur(80px); /* Blur yang kuat */
-            z-index: 2; /* Di atas overlay, di bawah teks */
+            filter: blur(80px);
+            z-index: 2;
             animation: pulse 5s infinite alternate-reverse ease-in-out;
         }
         
@@ -196,10 +192,9 @@
             100% { transform: scale(1.1); opacity: 1; }
         }
 
-
         #home .container {
             position: relative;
-            z-index: 3; /* Pastikan teks ada di atas overlay dan elemen dekoratif */
+            z-index: 3;
         }
 
         #home h1 {
@@ -208,223 +203,320 @@
             line-height: 1.2;
             text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3);
         }
-
-        #home p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            font-weight: 300;
-            color: #ccc;
-        }
-
-        #anggota {
-            background-color: #1f1f1f;
-        }
-        #anggota .anggota-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .anggota-card {
-            background-color: var(--card-bg-color);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #3a3a3a;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
         
-        .anggota-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05));
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 0;
+        /* ... (CSS lainnya tetap sama) ... */
+        
+        /* === STYLE BARU UNTUK MUSIC PLAYER === */
+        .music-player {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: rgba(44, 44, 44, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 30px; /* Rounded sesuai permintaan */
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2000;
+            transition: transform 0.3s ease;
+        }
+        .music-player:hover {
+            transform: scale(1.05);
         }
 
-        .anggota-card:hover::before {
-            transform: translateY(0);
-        }
-
-        .anggota-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1);
-        }
-
-        .anggota-card h3 {
+        .song-info .song-title {
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--primary-light);
-            margin-bottom: 8px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-        .anggota-card p {
-            font-size: 1.05rem;
-            color: #bbb;
-            position: relative;
-            z-index: 1;
+            margin: 0;
         }
 
-        #list-tugas .tugas-container {
-            text-align: center;
-            padding-top: 40px;
+        .music-player .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        #list-tugas p {
-            font-size: 1.15rem;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .btn-tugas {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
-            color: var(--bg-color);
-            padding: 18px 35px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 8px;
-            margin: 15px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        #play-pause-btn {
+            background: var(--primary-color);
             border: none;
-            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-tugas::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: skewX(-30deg);
-            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: -1;
-        }
-
-        .btn-tugas:hover::before {
-            left: 100%;
-        }
-
-        .btn-tugas:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
             color: white;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        #play-pause-btn:hover {
+            background: var(--primary-light);
         }
 
-        .footer {
-            background-color: #222;
-            color: #aaa;
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid #3a3a3a;
-            font-size: 0.95rem;
+        .music-player .fa-pause {
+            display: none; /* Sembunyikan ikon pause secara default */
         }
-
-        .footer p {
-            margin: 5px 0;
+        .music-player.playing .fa-play {
+            display: none; /* Sembunyikan ikon play saat musik berjalan */
+        }
+        .music-player.playing .fa-pause {
+            display: block; /* Tampilkan ikon pause saat musik berjalan */
         }
         
-        .footer .sub-text {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 8px;
+        .music-wave {
+            display: flex;
+            align-items: flex-end;
+            height: 20px;
+            gap: 2px;
+        }
+        .music-wave span {
+            width: 3px;
+            background-color: var(--primary-color);
+            animation: wave-animation 1.2s infinite ease-in-out;
+            animation-play-state: paused; /* Animasi berhenti secara default */
+            transform-origin: bottom;
         }
 
-        @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: var(--header-height);
-                left: 0;
-                background-color: var(--bg-color);
-                text-align: center;
-                border-top: 1px solid #3a3a3a;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            }
-
-            .navbar .nav-links.active {
-                display: flex;
-            }
-
-            .navbar .nav-links li {
-                margin: 15px 0;
-            }
-            .navbar .nav-links a {
-                padding: 10px 0;
-            }
-            .navbar .nav-links a::after {
-                height: 1px;
-                bottom: 3px;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-            
-            .hamburger.toggle .bar:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            .hamburger.toggle .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.toggle .bar:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-            
-            #home h1 {
-                font-size: 2.5rem;
-            }
-            #home p {
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .btn-tugas {
-                padding: 15px 25px;
-                font-size: 1.05rem;
-            }
+        .music-player.playing .music-wave span {
+            animation-play-state: running; /* Jalankan animasi saat musik play */
         }
 
-        @media (max-width: 480px) {
-            .navbar .logo {
-                font-size: 1.5rem;
-            }
-            #home h1 {
-                font-size: 2rem;
-            }
-            #home p {
-                font-size: 0.95rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .btn-tugas {
-                width: 90%;
-                margin: 10px auto;
-                display: block;
-            }
+        /* Variasi delay dan tinggi untuk gelombang */
+        .music-wave span:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+        .music-wave span:nth-child(2) { height: 16px; animation-delay: 0.3s; }
+        .music-wave span:nth-child(3) { height: 12px; animation-delay: 0.5s; }
+        .music-wave span:nth-child(4) { height: 18px; animation-delay: 0.2s; }
+
+        @keyframes wave-animation {
+            0%, 100% { transform: scaleY(0.2); }
+            50% { transform: scaleY(1.0); }
         }
+        
+        /* ... (CSS lainnya dari kode Anda, seperti section, footer, responsive, dll.) ... */
+        /* Pastikan kode CSS lainnya tetap ada di sini */
+        #anggota {
+            background-color: #1f1f1f;
+        }
+        #anggota .anggota-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .anggota-card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anggota-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05));
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+
+        .anggota-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .anggota-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1);
+        }
+
+        .anggota-card h3 {
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        .anggota-card p {
+            font-size: 1.05rem;
+            color: #bbb;
+            position: relative;
+            z-index: 1;
+        }
+
+        #list-tugas .tugas-container {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        #list-tugas p {
+            font-size: 1.15rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn-tugas {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: var(--bg-color);
+            padding: 18px 35px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            margin: 15px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-tugas::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-30deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+        }
+
+        .btn-tugas:hover::before {
+            left: 100%;
+        }
+
+        .btn-tugas:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6);
+            color: white;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #3a3a3a;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .footer .sub-text {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                background-color: var(--bg-color);
+                text-align: center;
+                border-top: 1px solid #3a3a3a;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 15px 0;
+            }
+            .navbar .nav-links a {
+                padding: 10px 0;
+            }
+            .navbar .nav-links a::after {
+                height: 1px;
+                bottom: 3px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.toggle .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.toggle .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.toggle .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            #home p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn-tugas {
+                padding: 15px 25px;
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.5rem;
+            }
+            #home h1 {
+                font-size: 2rem;
+            }
+            #home p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .btn-tugas {
+                width: 90%;
+                margin: 10px auto;
+                display: block;
+            }
+            .music-player { /* Sesuaikan untuk layar kecil */
+                padding: 8px 15px;
+                gap: 10px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .song-info .song-title { font-size: 0.8rem; }
+            #play-pause-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -509,6 +601,24 @@
         </div>
     </footer>
 
+    <audio id="background-music" src="KasihAbaAba.mp3"></audio>
+    <div class="music-player" id="music-player-container">
+        <div class="song-info">
+            <p class="song-title">Kasih Aba Aba</p>
+        </div>
+        <div class="controls">
+            <button id="play-pause-btn">
+                <i class="fas fa-play"></i>
+                <i class="fas fa-pause"></i>
+            </button>
+            <div class="music-wave">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -524,10 +634,31 @@
                 hamburger.classList.remove('toggle');
             });
         });
+
+        // === JAVASCRIPT UNTUK MUSIC PLAYER ===
+        const musicPlayerContainer = document.getElementById('music-player-container');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const backgroundMusic = document.getElementById('background-music');
+
+        playPauseBtn.addEventListener('click', () => {
+            // Cek apakah musik sedang berjalan atau tidak
+            const isPlaying = musicPlayerContainer.classList.contains('playing');
+
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicPlayerContainer.classList.remove('playing');
+            } else {
+                backgroundMusic.play();
+                musicPlayerContainer.classList.add('playing');
+            }
+        });
+
+        // (Opsional) Jika musik selesai, reset tampilan tombol
+        backgroundMusic.addEventListener('ended', () => {
+            musicPlayerContainer.classList.remove('playing');
+        });
+
     </script>
 
 </body>
-
 </html>
-
-
