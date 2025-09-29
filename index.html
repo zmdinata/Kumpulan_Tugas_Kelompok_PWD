@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumpulan Tugas Kelompok - P2 Boyyy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Basic Styling */
+        :root {
+            --bg-color: #1a1a1a;
+            --primary-color: #0099ff; /* Primary color baru: Biru terang */
+            --primary-light: #33bbff;
+            --card-bg-color: #2c2c2c;
+            --text-color: #f0f0f0;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* Header & Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px);
+            height: var(--header-height);
+            padding: 0 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid #3d3d3d;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 35px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+        }
+
+        .hamburger .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section (Home) */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d); /* Default gradient */
+            /* --- PENAMBAHAN UNTUK BACKGROUND IMAGE --- */
+            background-image: url('P2.jpeg'); /* Ganti 'kelompok.jpg' dengan URL atau path gambar Anda */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* ------------------------------------------- */
+        }
+
+        /* Overlay Hitam Transparan */
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); /* Hitam dengan opacity 20% */
+            z-index: 1; /* Di atas gambar, di bawah teks */
+            /* Animasi sebelumnya untuk lingkaran biru dihilangkan agar tidak bentrok */
+        }
+
+        /* Elemen dekoratif biru yang lebih kecil dan tidak menutupi gambar utama */
+        #home::after {
+            content: '';
+            position: absolute;
+            bottom: -70px;
+            right: -70px;
+            width: 180px; /* Ukuran lebih kecil */
+            height: 180px; /* Ukuran lebih kecil */
+            background: rgba(0, 153, 255, 0.1); /* Biru dengan opacity rendah */
+            border-radius: 50%;
+            filter: blur(80px); /* Blur yang kuat */
+            z-index: 2; /* Di atas overlay, di bawah teks */
+            animation: pulse 5s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+
+        #home .container {
+            position: relative;
+            z-index: 3; /* Pastikan teks ada di atas overlay dan elemen dekoratif */
+        }
+
+        #home h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3);
+        }
+
+        #home p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        #anggota {
+            background-color: #1f1f1f;
+        }
+        #anggota .anggota-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .anggota-card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anggota-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05));
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 0;
+        }
+
+        .anggota-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .anggota-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1);
+        }
+
+        .anggota-card h3 {
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        .anggota-card p {
+            font-size: 1.05rem;
+            color: #bbb;
+            position: relative;
+            z-index: 1;
+        }
+
+        #list-tugas .tugas-container {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        #list-tugas p {
+            font-size: 1.15rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn-tugas {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: var(--bg-color);
+            padding: 18px 35px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            margin: 15px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-tugas::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-30deg);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+        }
+
+        .btn-tugas:hover::before {
+            left: 100%;
+        }
+
+        .btn-tugas:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6);
+            color: white;
+        }
+
+        .footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #3a3a3a;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .footer .sub-text {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                background-color: var(--bg-color);
+                text-align: center;
+                border-top: 1px solid #3a3a3a;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 15px 0;
+            }
+            .navbar .nav-links a {
+                padding: 10px 0;
+            }
+            .navbar .nav-links a::after {
+                height: 1px;
+                bottom: 3px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.toggle .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.toggle .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.toggle .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            #home p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .btn-tugas {
+                padding: 15px 25px;
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.5rem;
+            }
+            #home h1 {
+                font-size: 2rem;
+            }
+            #home p {
+                font-size: 0.95rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .btn-tugas {
+                width: 90%;
+                margin: 10px auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo">P2 Boyyy</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#list-tugas">List Tugas Proyek</a></li>
+                <li><a href="#anggota">Nama Anggota</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container">
+                <h1>Kumpulan Tugas Kelompok - P2 Boyyy</h1>
+            </div>
+        </section>
+
+        <section id="list-tugas">
+            <div class="container tugas-container">
+                <h2>Jelajahi Karya Proyek Kami</h2>
+                <p>Berikut adalah koleksi tautan menuju tugas-tugas proyek yang telah kami ciptakan dan kembangkan:</p>
+                <div style="margin-top: 30px;">
+                    <a href="https://p2boyyy.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas CV</a>
+                    <a href="http://soalessayuts.great-site.net/?i=1" target="_blank" class="btn-tugas">Lihat Tugas Soal Essay UTS</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="anggota">
+            <div class="container">
+                <h2>Anggota Kelompok P2 Boyyy</h2>
+                <div class="anggota-grid">
+                    <div class="anggota-card">
+                        <h3>Abdul Rohman</h3>
+                        <p>NIM: 43240329</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Dikri Fauzan Anawawi</h3>
+                        <p>NIM: 43240366</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Muhammad Hisyam Nudin</h3>
+                        <p>NIM: 43240455</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Muhammad Zhaky Albaihaqy</h3>
+                        <p>NIM: 43240411</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Tio Pramudya Berliana</h3>
+                        <p>NIM: 43240444</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Tion Hermawan</h3>
+                        <p>NIM: 43240445</p>
+                    </div>
+                    <div class="anggota-card">
+                        <h3>Zacky Muhammad Dinata</h3>
+                        <p>NIM: 43240450</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 P2 Boyyy - Sistem Informasi 2024 KIP P2</p>
+            <p class="sub-text">Mata Kuliah Pemrograman Web Dasar.</p>
+            <p class="sub-text">Semua hak cipta tugas dan konten dilindungi oleh kelompok P2 Boyyy.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        document.querySelectorAll('.nav-links li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+    </script>
+
+</body>
+</html>
