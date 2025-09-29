@@ -34,496 +34,149 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 2rem;
-            overflow: hidden;
-        }
-
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid #333;
-        }
         
-        section:last-of-type {
-            border-bottom: none;
-        }
+        /* ... (CSS yang sudah ada sebelumnya tetap sama, saya hanya akan menampilkan CSS baru/yang diubah) ... */
 
-        h1, h2 {
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
+        .container { max-width: 1100px; margin: auto; padding: 0 2rem; overflow: hidden; }
+        section { padding: 80px 0; border-bottom: 1px solid #333; }
+        section:last-of-type { border-bottom: none; }
+        h1, h2 { color: var(--primary-color); margin-bottom: 25px; font-weight: 700; }
+        h2 { font-size: 2.5rem; text-align: center; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; left: 0; background-color: rgba(26, 26, 26, 0.95); backdrop-filter: blur(12px); height: var(--header-height); padding: 0 2rem; z-index: 1000; border-bottom: 1px solid #3d3d3d; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); }
+        .navbar .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .navbar .nav-links { list-style: none; display: flex; }
+        .navbar .nav-links li { margin-left: 35px; }
+        .navbar .nav-links a { color: var(--text-color); text-decoration: none; font-size: 1.05rem; font-weight: 400; transition: color 0.3s ease, transform 0.2s ease; position: relative; padding-bottom: 5px; }
+        .navbar .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; background-color: var(--primary-color); left: 0; bottom: 0; transition: width 0.3s ease; }
+        .navbar .nav-links a:hover::after { width: 100%; }
+        .navbar .nav-links a:hover { color: var(--primary-light); transform: translateY(-2px); }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
+        .hamburger .bar { width: 100%; height: 3px; background-color: var(--text-color); border-radius: 5px; transition: all 0.3s ease-in-out; }
+        #home { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100vh; position: relative; overflow: hidden; background-image: url('P2.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+        #home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 1; }
+        #home::after { content: ''; position: absolute; bottom: -70px; right: -70px; width: 180px; height: 180px; background: rgba(0, 153, 255, 0.1); border-radius: 50%; filter: blur(80px); z-index: 2; animation: pulse 5s infinite alternate-reverse ease-in-out; }
+        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.7; } 100% { transform: scale(1.1); opacity: 1; } }
+        #home .container { position: relative; z-index: 3; }
+        #home h1 { font-size: 3.8rem; margin-bottom: 1.5rem; line-height: 1.2; text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3); }
+        #home p { font-size: 1.3rem; max-width: 700px; font-weight: 300; color: #ccc; }
+        #anggota { background-color: #1f1f1f; }
+        #anggota .anggota-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .anggota-card { background-color: var(--card-bg-color); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid #3a3a3a; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
+        .anggota-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05)); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 0; }
+        .anggota-card:hover::before { transform: translateY(0); }
+        .anggota-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1); }
+        .anggota-card h3 { color: var(--primary-light); margin-bottom: 8px; font-size: 1.4rem; font-weight: 600; position: relative; z-index: 1; }
+        .anggota-card p { font-size: 1.05rem; color: #bbb; position: relative; z-index: 1; }
+        #list-tugas .tugas-container { text-align: center; padding-top: 40px; }
+        #list-tugas p { font-size: 1.15rem; color: #ccc; margin-bottom: 30px; }
+        .btn-tugas { display: inline-block; background: linear-gradient(45deg, var(--primary-color), var(--primary-light)); color: var(--bg-color); padding: 18px 35px; text-decoration: none; font-size: 1.2rem; font-weight: 600; border-radius: 8px; margin: 15px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: none; box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4); position: relative; overflow: hidden; z-index: 1; }
+        .btn-tugas::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.2); transform: skewX(-30deg); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: -1; }
+        .btn-tugas:hover::before { left: 100%; }
+        .btn-tugas:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6); color: white; }
+        .footer { background-color: #222; color: #aaa; text-align: center; padding: 30px 0; border-top: 1px solid #3a3a3a; font-size: 0.95rem; }
+        .footer p { margin: 5px 0; }
+        .footer .sub-text { font-size: 0.85rem; color: #777; margin-top: 8px; }
 
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-        }
-
-        /* Header & Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background-color: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(12px);
-            height: var(--header-height);
-            padding: 0 2rem;
-            z-index: 1000;
-            border-bottom: 1px solid #3d3d3d;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .navbar .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .navbar .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar .nav-links li {
-            margin-left: 35px;
-        }
-
-        .navbar .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 400;
-            transition: color 0.3s ease, transform 0.2s ease;
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        .navbar .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            left: 0;
-            bottom: 0;
-            transition: width 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .navbar .nav-links a:hover {
-            color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-        }
-
-        .hamburger .bar {
-            width: 100%;
-            height: 3px;
-            background-color: var(--text-color);
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Hero Section (Home) */
-        #home {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            background-image: url('P2.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        #home::after {
-            content: '';
-            position: absolute;
-            bottom: -70px;
-            right: -70px;
-            width: 180px;
-            height: 180px;
-            background: rgba(0, 153, 255, 0.1);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: 2;
-            animation: pulse 5s infinite alternate-reverse ease-in-out;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            100% { transform: scale(1.1); opacity: 1; }
-        }
-
-        #home .container {
-            position: relative;
-            z-index: 3;
-        }
-
-        #home h1 {
-            font-size: 3.8rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3);
-        }
-
-        #home p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            font-weight: 300;
-            color: #ccc;
-        }
-        
-        /* Anggota Section */
-        #anggota {
-            background-color: #1f1f1f;
-        }
-        
-        #anggota .anggota-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .anggota-card {
-            background-color: var(--card-bg-color);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #3a3a3a;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .anggota-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05));
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 0;
-        }
-
-        .anggota-card:hover::before {
-            transform: translateY(0);
-        }
-
-        .anggota-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1);
-        }
-
-        .anggota-card h3 {
-            color: var(--primary-light);
-            margin-bottom: 8px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .anggota-card p {
-            font-size: 1.05rem;
-            color: #bbb;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* List Tugas Section */
-        #list-tugas .tugas-container {
-            text-align: center;
-            padding-top: 40px;
-        }
-
-        #list-tugas p {
-            font-size: 1.15rem;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .btn-tugas {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
-            color: var(--bg-color);
-            padding: 18px 35px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 8px;
-            margin: 15px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-tugas::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: skewX(-30deg);
-            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: -1;
-        }
-
-        .btn-tugas:hover::before {
-            left: 100%;
-        }
-
-        .btn-tugas:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6);
-            color: white;
-        }
-        
-        /* Music Player */
+        /* === STYLE BARU UNTUK MUSIC PLAYER YANG DISEMPURNAKAN === */
         .music-player {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background-color: rgba(44, 44, 44, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 10px 20px;
+            width: 280px; /* Lebar tetap agar rapi */
+            background-color: rgba(44, 44, 44, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px; /* Sedikit lebih kotak */
+            padding: 15px;
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 2000;
-            transition: transform 0.3s ease;
-        }
-        .music-player:hover {
-            transform: scale(1.05);
+            transform: translateX(120%); /* Sembunyi di awal */
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
 
-        .song-info .song-title {
+        .music-player.visible {
+            transform: translateX(0); /* Muncul saat musik siap */
+            opacity: 1;
+        }
+
+        .album-art {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .song-details {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        
+        .song-details .song-title {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-light);
-            margin: 0;
+            white-space: nowrap;
+        }
+
+        .progress-bar {
+            background-color: #555;
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 8px;
+            cursor: default;
+        }
+
+        .progress {
+            background-color: var(--primary-color);
+            height: 100%;
+            width: 0%; /* Dimulai dari 0 */
+            border-radius: 2px;
+            transition: width 0.1s linear;
         }
 
         .music-player .controls {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
 
         #play-pause-btn {
-            background: var(--primary-color);
+            background: transparent;
             border: none;
-            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 1.8rem; /* Ikon lebih besar */
             width: 40px;
             height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            color: white;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
+            transition: transform 0.2s ease;
         }
         #play-pause-btn:hover {
-            background: var(--primary-light);
+            transform: scale(1.1);
+            color: var(--primary-light);
         }
 
-        .music-player .fa-pause {
-            display: none;
-        }
-        .music-player.playing .fa-play {
-            display: none;
-        }
-        .music-player.playing .fa-pause {
-            display: block;
-        }
+        .music-player .fa-pause { display: none; }
+        .music-player.playing .fa-play { display: none; }
+        .music-player.playing .fa-pause { display: block; }
         
-        .music-wave {
-            display: flex;
-            align-items: flex-end;
-            height: 20px;
-            gap: 2px;
-        }
-        .music-wave span {
-            width: 3px;
-            background-color: var(--primary-color);
-            animation: wave-animation 1.2s infinite ease-in-out;
-            animation-play-state: paused;
-            transform-origin: bottom;
-        }
-
-        .music-player.playing .music-wave span {
-            animation-play-state: running;
-        }
-
-        .music-wave span:nth-child(1) { height: 10px; animation-delay: 0.1s; }
-        .music-wave span:nth-child(2) { height: 16px; animation-delay: 0.3s; }
-        .music-wave span:nth-child(3) { height: 12px; animation-delay: 0.5s; }
-        .music-wave span:nth-child(4) { height: 18px; animation-delay: 0.2s; }
-
-        @keyframes wave-animation {
-            0%, 100% { transform: scaleY(0.2); }
-            50% { transform: scaleY(1.0); }
-        }
+        .music-wave { /* Dihapus karena diganti progress bar */ }
         
-        /* Footer */
-        .footer {
-            background-color: #222;
-            color: #aaa;
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid #3a3a3a;
-            font-size: 0.95rem;
-        }
+        /* ... (Media queries tetap sama) ... */
+        @media (max-width: 768px) { .navbar .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: var(--header-height); left: 0; background-color: var(--bg-color); text-align: center; border-top: 1px solid #3a3a3a; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); } .navbar .nav-links.active { display: flex; } .navbar .nav-links li { margin: 15px 0; } .navbar .nav-links a { padding: 10px 0; } .navbar .nav-links a::after { height: 1px; bottom: 3px; } .hamburger { display: flex; } .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); } .hamburger.toggle .bar:nth-child(2) { opacity: 0; } .hamburger.toggle .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); } #home h1 { font-size: 2.5rem; } #home p { font-size: 1.1rem; } h2 { font-size: 2rem; } .btn-tugas { padding: 15px 25px; font-size: 1.05rem; } }
+        @media (max-width: 480px) { .navbar .logo { font-size: 1.5rem; } #home h1 { font-size: 2rem; } #home p { font-size: 0.95rem; } h2 { font-size: 1.8rem; } .btn-tugas { width: 90%; margin: 10px auto; display: block; } .music-player { width: auto; max-width: 250px; padding: 8px 15px; gap: 10px; bottom: 15px; right: 15px; } .album-art { width: 40px; height: 40px; font-size: 1.2rem; } .song-details .song-title { font-size: 0.8rem; } #play-pause-btn { width: 35px; height: 35px; font-size: 1.5rem; } }
 
-        .footer p {
-            margin: 5px 0;
-        }
-        
-        .footer .sub-text {
-            font-size: 0.85rem;
-            color: #777;
-            margin-top: 8px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: var(--header-height);
-                left: 0;
-                background-color: var(--bg-color);
-                text-align: center;
-                border-top: 1px solid #3a3a3a;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            }
-
-            .navbar .nav-links.active {
-                display: flex;
-            }
-
-            .navbar .nav-links li {
-                margin: 15px 0;
-            }
-            .navbar .nav-links a {
-                padding: 10px 0;
-            }
-            .navbar .nav-links a::after {
-                height: 1px;
-                bottom: 3px;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-            
-            .hamburger.toggle .bar:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            .hamburger.toggle .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.toggle .bar:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-            
-            #home h1 {
-                font-size: 2.5rem;
-            }
-            #home p {
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .btn-tugas {
-                padding: 15px 25px;
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar .logo {
-                font-size: 1.5rem;
-            }
-            #home h1 {
-                font-size: 2rem;
-            }
-            #home p {
-                font-size: 0.95rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .btn-tugas {
-                width: 90%;
-                margin: 10px auto;
-                display: block;
-            }
-            .music-player {
-                padding: 8px 15px;
-                gap: 10px;
-                bottom: 15px;
-                right: 15px;
-            }
-            .song-info .song-title { font-size: 0.8rem; }
-            #play-pause-btn { width: 35px; height: 35px; font-size: 0.9rem; }
-        }
     </style>
 </head>
 <body>
@@ -548,7 +201,6 @@
         <section id="home">
             <div class="container">
                 <h1>Kumpulan Tugas Kelompok - P2 Boyyy</h1>
-            </div>
         </section>
 
         <section id="list-tugas">
@@ -566,34 +218,13 @@
             <div class="container">
                 <h2>Anggota Kelompok P2 Boyyy</h2>
                 <div class="anggota-grid">
-                    <div class="anggota-card">
-                        <h3>Abdul Rohman</h3>
-                        <p>NIM: 43240329</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Dikri Fauzan Anawawi</h3>
-                        <p>NIM: 43240366</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Muhammad Hisyam Nudin</h3>
-                        <p>NIM: 43240455</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Muhammad Zhaky Albaihaqy</h3>
-                        <p>NIM: 43240411</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Tio Pramudya Berliana</h3>
-                        <p>NIM: 43240444</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Tion Hermawan</h3>
-                        <p>NIM: 43240445</p>
-                    </div>
-                    <div class="anggota-card">
-                        <h3>Zacky Muhammad Dinata</h3>
-                        <p>NIM: 43240450</p>
-                    </div>
+                    <div class="anggota-card"><h3>Abdul Rohman</h3><p>NIM: 43240329</p></div>
+                    <div class="anggota-card"><h3>Dikri Fauzan Anawawi</h3><p>NIM: 43240366</p></div>
+                    <div class="anggota-card"><h3>Muhammad Hisyam Nudin</h3><p>NIM: 43240455</p></div>
+                    <div class="anggota-card"><h3>Muhammad Zhaky Albaihaqy</h3><p>NIM: 43240411</p></div>
+                    <div class="anggota-card"><h3>Tio Pramudya Berliana</h3><p>NIM: 43240444</p></div>
+                    <div class="anggota-card"><h3>Tion Hermawan</h3><p>NIM: 43240445</p></div>
+                    <div class="anggota-card"><h3>Zacky Muhammad Dinata</h3><p>NIM: 43240450</p></div>
                 </div>
             </div>
         </section>
@@ -608,33 +239,32 @@
         </div>
     </footer>
 
-   <audio id="background-music" src="musik/KasihAbaAba.mp3"></audio>
+    <audio id="background-music" src="KasihAbaAba.mp3" loop></audio>
     <div class="music-player" id="music-player-container">
-        <div class="song-info">
+        <div class="album-art">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="song-details">
             <p class="song-title">Kasih Aba Aba</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
         </div>
         <div class="controls">
             <button id="play-pause-btn">
                 <i class="fas fa-play"></i>
                 <i class="fas fa-pause"></i>
             </button>
-            <div class="music-wave">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </div>
     <script>
+        // Hamburger Menu Script
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('toggle');
         });
-
         document.querySelectorAll('.nav-links li a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -642,29 +272,48 @@
             });
         });
 
-        // JAVASCRIPT UNTUK MUSIC PLAYER
-        const musicPlayerContainer = document.getElementById('music-player-container');
+        // === JAVASCRIPT BARU UNTUK MUSIC PLAYER ===
+        const musicPlayer = document.getElementById('music-player-container');
         const playPauseBtn = document.getElementById('play-pause-btn');
-        const backgroundMusic = document.getElementById('background-music');
+        const audio = document.getElementById('background-music');
+        const progressBar = document.getElementById('progress');
 
+        // Fungsi untuk memulai musik (hanya sekali setelah interaksi pertama)
+        const startMusic = () => {
+            audio.play().then(() => {
+                musicPlayer.classList.add('playing');
+                musicPlayer.classList.add('visible'); // Tampilkan player setelah berhasil play
+            }).catch(error => {
+                // Autoplay diblokir, tampilkan player agar user bisa klik manual
+                console.log("Autoplay was prevented. User needs to click play.", error);
+                musicPlayer.classList.add('visible');
+            });
+        };
+        
+        // Coba mainkan musik setelah interaksi pertama dari user
+        document.addEventListener('click', startMusic, { once: true });
+        
+        // Fungsi Play/Pause saat tombol diklik
         playPauseBtn.addEventListener('click', () => {
-            const isPlaying = musicPlayerContainer.classList.contains('playing');
-
+            const isPlaying = musicPlayer.classList.contains('playing');
             if (isPlaying) {
-                backgroundMusic.pause();
-                musicPlayerContainer.classList.remove('playing');
+                audio.pause();
             } else {
-                backgroundMusic.play();
-                musicPlayerContainer.classList.add('playing');
+                audio.play();
             }
+            musicPlayer.classList.toggle('playing');
         });
-
-        backgroundMusic.addEventListener('ended', () => {
-            musicPlayerContainer.classList.remove('playing');
+        
+        // Update progress bar saat musik berjalan
+        audio.addEventListener('timeupdate', () => {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
         });
-
+        
+        // Sinkronisasi status play/pause jika diubah dari sumber lain
+        audio.addEventListener('play', () => musicPlayer.classList.add('playing'));
+        audio.addEventListener('pause', () => musicPlayer.classList.remove('playing'));
     </script>
 
 </body>
 </html>
-
