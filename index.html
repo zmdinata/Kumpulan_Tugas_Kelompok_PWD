@@ -34,8 +34,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        /* ... (CSS yang sudah ada sebelumnya tetap sama, saya hanya akan menampilkan CSS baru/yang diubah) ... */
 
         .container { max-width: 1100px; margin: auto; padding: 0 2rem; overflow: hidden; }
         section { padding: 80px 0; border-bottom: 1px solid #333; }
@@ -77,15 +75,15 @@
         .footer p { margin: 5px 0; }
         .footer .sub-text { font-size: 0.85rem; color: #777; margin-top: 8px; }
 
-        /* === STYLE BARU UNTUK MUSIC PLAYER YANG DISEMPURNAKAN === */
+        /* === STYLE UNTUK MUSIC PLAYER === */
         .music-player {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 280px; /* Lebar tetap agar rapi */
+            width: 280px;
             background-color: rgba(44, 44, 44, 0.85);
             backdrop-filter: blur(12px);
-            border-radius: 20px; /* Sedikit lebih kotak */
+            border-radius: 20px;
             padding: 15px;
             display: flex;
             align-items: center;
@@ -93,15 +91,13 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 2000;
-            transform: translateX(120%); /* Sembunyi di awal */
-            opacity: 0;
+            /* transform: translateX(120%); */ /* BARIS INI DIHAPUS */
+            /* opacity: 0; */                  /* BARIS INI DIHAPUS */
             transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
 
-        .music-player.visible {
-            transform: translateX(0); /* Muncul saat musik siap */
-            opacity: 1;
-        }
+        /* Kelas ini tidak lagi diperlukan karena player selalu terlihat */
+        /* .music-player.visible { ... } */
 
         .album-art {
             width: 50px;
@@ -139,7 +135,7 @@
         .progress {
             background-color: var(--primary-color);
             height: 100%;
-            width: 0%; /* Dimulai dari 0 */
+            width: 0%;
             border-radius: 2px;
             transition: width 0.1s linear;
         }
@@ -154,7 +150,7 @@
             border: none;
             cursor: pointer;
             color: white;
-            font-size: 1.8rem; /* Ikon lebih besar */
+            font-size: 1.8rem;
             width: 40px;
             height: 40px;
             display: flex;
@@ -171,9 +167,6 @@
         .music-player.playing .fa-play { display: none; }
         .music-player.playing .fa-pause { display: block; }
         
-        .music-wave { /* Dihapus karena diganti progress bar */ }
-        
-        /* ... (Media queries tetap sama) ... */
         @media (max-width: 768px) { .navbar .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: var(--header-height); left: 0; background-color: var(--bg-color); text-align: center; border-top: 1px solid #3a3a3a; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); } .navbar .nav-links.active { display: flex; } .navbar .nav-links li { margin: 15px 0; } .navbar .nav-links a { padding: 10px 0; } .navbar .nav-links a::after { height: 1px; bottom: 3px; } .hamburger { display: flex; } .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); } .hamburger.toggle .bar:nth-child(2) { opacity: 0; } .hamburger.toggle .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); } #home h1 { font-size: 2.5rem; } #home p { font-size: 1.1rem; } h2 { font-size: 2rem; } .btn-tugas { padding: 15px 25px; font-size: 1.05rem; } }
         @media (max-width: 480px) { .navbar .logo { font-size: 1.5rem; } #home h1 { font-size: 2rem; } #home p { font-size: 0.95rem; } h2 { font-size: 1.8rem; } .btn-tugas { width: 90%; margin: 10px auto; display: block; } .music-player { width: auto; max-width: 250px; padding: 8px 15px; gap: 10px; bottom: 15px; right: 15px; } .album-art { width: 40px; height: 40px; font-size: 1.2rem; } .song-details .song-title { font-size: 0.8rem; } #play-pause-btn { width: 35px; height: 35px; font-size: 1.5rem; } }
 
@@ -201,6 +194,8 @@
         <section id="home">
             <div class="container">
                 <h1>Kumpulan Tugas Kelompok - P2 Boyyy</h1>
+                <p>Website ini didedikasikan untuk mengumpulkan dan menyajikan semua tugas proyek kelompok yang telah kami selesaikan untuk mata kuliah Pemrograman Web Dasar, sebagai portofolio digital kami.</p>
+            </div>
         </section>
 
         <section id="list-tugas">
@@ -272,7 +267,7 @@
             });
         });
 
-        // === JAVASCRIPT BARU UNTUK MUSIC PLAYER ===
+        // === JAVASCRIPT UNTUK MUSIC PLAYER ===
         const musicPlayer = document.getElementById('music-player-container');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const audio = document.getElementById('background-music');
@@ -282,11 +277,8 @@
         const startMusic = () => {
             audio.play().then(() => {
                 musicPlayer.classList.add('playing');
-                musicPlayer.classList.add('visible'); // Tampilkan player setelah berhasil play
             }).catch(error => {
-                // Autoplay diblokir, tampilkan player agar user bisa klik manual
-                console.log("Autoplay was prevented. User needs to click play.", error);
-                musicPlayer.classList.add('visible');
+                console.log("Autoplay dicegah oleh browser. Perlu klik manual.", error);
             });
         };
         
@@ -301,16 +293,19 @@
             } else {
                 audio.play();
             }
-            musicPlayer.classList.toggle('playing');
+            // Class 'playing' akan di-handle oleh event listener 'play' dan 'pause' di bawah
         });
         
         // Update progress bar saat musik berjalan
         audio.addEventListener('timeupdate', () => {
-            const progressPercent = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
+            // Cek jika durasi valid sebelum membagi
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            }
         });
         
-        // Sinkronisasi status play/pause jika diubah dari sumber lain
+        // Sinkronisasi UI dengan status audio
         audio.addEventListener('play', () => musicPlayer.classList.add('playing'));
         audio.addEventListener('pause', () => musicPlayer.classList.remove('playing'));
     </script>
