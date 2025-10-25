@@ -347,20 +347,53 @@
             /* Teks tetap gelap saat hover */
         }
 
-        /* === STYLE SUB-SECTION TUGAS BARU === */
-        .tugas-subsection {
-            margin-top: 35px;
+        
+        /* === BAGIAN YANG DIMODIFIKASI === */
+
+        /* === STYLE BARU UNTUK GRID TUGAS === */
+        .tugas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            text-align: center; /* Mengatur text-align untuk kartu di dalamnya */
         }
 
-        .tugas-subsection h3 {
-            color: #ccc;
-            font-weight: 400;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-            display: inline-block;
+        /* === STYLE SUB-SECTION TUGAS (DIMODIFIKASI JADI KARTU) === */
+        .tugas-subsection {
+            /* Hapus margin-top lama, diganti oleh 'gap' di grid */
+            /* margin-top: 35px; */
+
+            /* Style kartu baru */
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #3a3a3a;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
+        .tugas-subsection:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 153, 255, 0.1);
+        }
+
+        /* === STYLE JUDUL SUB-SECTION (DIMODIFIKASI) === */
+        .tugas-subsection h3 {
+            /* Hapus style lama */
+            /* font-weight: 400; */
+            /* border-bottom: 1px solid #444; */
+            /* padding-bottom: 10px; */
+            /* display: inline-block; */
+
+            /* Style baru yang lebih menonjol */
+            color: var(--primary-light);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 25px; /* Jarak ke tombol di bawahnya */
+        }
+        /* === AKHIR BAGIAN MODIFIKASI === */
+
 
         .footer {
             background-color: #222;
@@ -622,20 +655,21 @@
             <div class="container tugas-container">
                 <h2>Jelajahi Karya Tugas Proyek Kami</h2>
                 <p>Berikut adalah koleksi tautan menuju tugas-tugas proyek yang telah kami ciptakan dan kembangkan:</p>
+                
+                <div class="tugas-grid">
+                    
+                    <div class="tugas-subsection">
+                        <h3>Pra-UTS</h3>
+                        <a href="https://p2boyyy.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas CV</a>
+                        <a href="https://soalessayuts.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas Soal Essay UTS</a>
+                    </div>
 
+                    <div class="tugas-subsection">
+                        <h3>Pra-UAS</h3>
+                        <a href="https://perpustakaanp2boyyy.infinityfreeapp.com/" target="_blank" class="btn-tugas btn-tugas-gold">Tugas Database Perpustakaan</a>
+                    </div>
 
-                <div class="tugas-subsection">
-                    <h3>Pra-UTS</h3>
-                    <a href="https://p2boyyy.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas CV</a>
-                    <a href="https://soalessayuts.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas Soal Essay UTS</a>
-                </div>
-
-                <div class="tugas-subsection">
-                    <h3>Pra-UAS</h3>
-                    <a href="https://perpustakaanp2boyyy.infinityfreeapp.com/" target="_blank" class="btn-tugas btn-tugas-gold">Tugas Database Perpustakaan</a>
-                </div>
-
-            </div>
+                </div> </div>
         </section>
 
         <section id="anggota">
@@ -745,12 +779,10 @@
             } else {
                 audio.play();
             }
-            // Class 'playing' akan di-handle oleh event listener 'play' dan 'pause' di bawah
         });
         
         // Update progress bar saat musik berjalan
         audio.addEventListener('timeupdate', () => {
-            // Cek jika durasi valid sebelum membagi
             if (audio.duration) {
                 const progressPercent = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = `${progressPercent}%`;
