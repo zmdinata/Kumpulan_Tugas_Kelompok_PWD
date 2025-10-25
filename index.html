@@ -1,314 +1,708 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kumpulan Tugas Kelompok - P2 Boyyy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        /* CSS Reset & Basic Styling */
-        :root {
-            --bg-color: #1a1a1a;
-            --primary-color: #0099ff;
-            --primary-light: #33bbff;
-            --card-bg-color: #2c2c2c;
-            --text-color: #f0f0f0;
-            --header-height: 70px;
-        }
+<div><br class="Apple-interchange-newline">
+    <!DOCTYPE html><br>
+    <html lang="id"><br>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head><br>
+        <meta charset="UTF-8"><br>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><br>
+        <title>Kumpulan Tugas Kelompok - P2 Boyyy</title><br>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><br>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><br>
+        <style><br>
+            /* CSS Reset & Basic Styling */<br>
+            :root {<br>
+                --bg-color: #1a1a1a;<br>
+                --primary-color: #0099ff;<br>
+                --primary-light: #33bbff;<br>
+                --card-bg-color: #2c2c2c;<br>
+                --text-color: #f0f0f0;<br>
+                --header-height: 70px;<br>
+                /* Variabel Warna Emas Baru */<br>
+                --gold-color: #daa520;<br>
+                --gold-light: #ffd700;<br>
+            }<br><br>
+            * {<br>
+                margin: 0;<br>
+                padding: 0;<br>
+                box-sizing: border-box;<br>
+            }<br><br>
+            html {<br>
+                scroll-behavior: smooth;<br>
+            }<br><br>
+            body {<br>
+                font-family: 'Poppins', sans-serif;<br>
+                background-color: var(--bg-color);<br>
+                color: var(--text-color);<br>
+                line-height: 1.6;<br>
+                overflow-x: hidden;<br>
+            }<br><br>
+            .container {
+                max-width: 1100px;
+                margin: auto;
+                padding: 0 2rem;
+                overflow: hidden;
+            }<br>
+            section {
+                padding: 80px 0;
+                border-bottom: 1px solid #333;
+            }<br>
+            section:last-of-type {
+                border-bottom: none;
+            }<br>
+            h1,
+            h2 {
+                color: var(--primary-color);
+                margin-bottom: 25px;
+                font-weight: 700;
+            }<br>
+            h2 {
+                font-size: 2.5rem;
+                text-align: center;
+            }<br>
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(12px);
+                height: var(--header-height);
+                padding: 0 2rem;
+                z-index: 1000;
+                border-bottom: 1px solid #3d3d3d;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }<br>
+            .navbar .logo {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }<br>
+            .navbar .nav-links {
+                list-style: none;
+                display: flex;
+            }<br>
+            .navbar .nav-links li {
+                margin-left: 35px;
+            }<br>
+            .navbar .nav-links a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-size: 1.05rem;
+                font-weight: 400;
+                transition: color 0.3s ease, transform 0.2s ease;
+                position: relative;
+                padding-bottom: 5px;
+            }<br>
+            .navbar .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background-color: var(--primary-color);
+                left: 0;
+                bottom: 0;
+                transition: width 0.3s ease;
+            }<br>
+            .navbar .nav-links a:hover::after {
+                width: 100%;
+            }<br>
+            .navbar .nav-links a:hover {
+                color: var(--primary-light);
+                transform: translateY(-2px);
+            }<br>
+            .hamburger {
+                display: none;
+                cursor: pointer;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+            }<br>
+            .hamburger .bar {
+                width: 100%;
+                height: 3px;
+                background-color: var(--text-color);
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }<br>
+            #home {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+                background-image: url('P2.jpeg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }<br>
+            #home::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }<br>
+            #home::after {
+                content: '';
+                position: absolute;
+                bottom: -70px;
+                right: -70px;
+                width: 180px;
+                height: 180px;
+                background: rgba(0, 153, 255, 0.1);
+                border-radius: 50%;
+                filter: blur(80px);
+                z-index: 2;
+                animation: pulse 5s infinite alternate-reverse ease-in-out;
+            }<br>
+            @keyframes pulse {
+                0% {
+                    transform: scale(0.9);
+                    opacity: 0.7;
+                }
 
-        html {
-            scroll-behavior: smooth;
-        }
+                100% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }<br>
+            #home .container {
+                position: relative;
+                z-index: 3;
+            }<br>
+            #home h1 {
+                font-size: 3.8rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
+                text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3);
+            }<br>
+            #home p {
+                font-size: 1.3rem;
+                max-width: 700px;
+                font-weight: 300;
+                color: #ccc;
+            }<br>
+            #anggota {
+                background-color: #1f1f1f;
+            }<br>
+            #anggota .anggota-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                margin-top: 40px;
+            }<br>
+            .anggota-card {
+                background-color: var(--card-bg-color);
+                padding: 30px;
+                border-radius: 12px;
+                text-align: center;
+                border: 1px solid #3a3a3a;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                position: relative;
+                overflow: hidden;
+            }<br>
+            .anggota-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05));
+                transform: translateY(100%);
+                transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: 0;
+            }<br>
+            .anggota-card:hover::before {
+                transform: translateY(0);
+            }<br>
+            .anggota-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1);
+            }<br>
+            .anggota-card h3 {
+                color: var(--primary-light);
+                margin-bottom: 8px;
+                font-size: 1.4rem;
+                font-weight: 600;
+                position: relative;
+                z-index: 1;
+            }<br>
+            .anggota-card p {
+                font-size: 1.05rem;
+                color: #bbb;
+                position: relative;
+                z-index: 1;
+            }<br>
+            #list-tugas .tugas-container {
+                text-align: center;
+                padding-top: 40px;
+            }<br>
+            #list-tugas p {
+                font-size: 1.15rem;
+                color: #ccc;
+                margin-bottom: 30px;
+            }<br>
+            .btn-tugas {
+                display: inline-block;
+                background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+                color: var(--bg-color);
+                padding: 18px 35px;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-radius: 8px;
+                margin: 15px;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border: none;
+                box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }<br>
+            .btn-tugas::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                transform: skewX(-30deg);
+                transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                z-index: -1;
+            }<br>
+            .btn-tugas:hover::before {
+                left: 100%;
+            }<br>
+            .btn-tugas:hover {
+                transform: translateY(-5px) scale(1.03);
+                box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6);
+                color: white;
+            }<br><br>
+            /* === STYLE TOMBOL EMAS BARU === */<br>
+            .btn-tugas.btn-tugas-gold {<br>
+                background: linear-gradient(45deg, var(--gold-color), var(--gold-light));<br>
+                box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);<br>
+                color: var(--bg-color);
+                /* Teks gelap agar kontras di atas emas */<br>
+            }<br><br>
+            .btn-tugas.btn-tugas-gold:hover {<br>
+                box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);<br>
+                color: #111;
+                /* Teks tetap gelap saat hover */<br>
+            }<br><br>
+            /* === STYLE SUB-SECTION TUGAS BARU === */<br>
+            .tugas-subsection {<br>
+                margin-top: 35px;<br>
+            }<br>
+            .tugas-subsection h3 {<br>
+                color: #ccc;<br>
+                font-weight: 400;<br>
+                font-size: 1.4rem;<br>
+                margin-bottom: 20px;<br>
+                border-bottom: 1px solid #444;<br>
+                padding-bottom: 10px;<br>
+                display: inline-block;<br>
+            }<br><br>
+            .footer {
+                background-color: #222;
+                color: #aaa;
+                text-align: center;
+                padding: 30px 0;
+                border-top: 1px solid #3a3a3a;
+                font-size: 0.95rem;
+            }<br>
+            .footer p {
+                margin: 5px 0;
+            }<br>
+            .footer .sub-text {
+                font-size: 0.85rem;
+                color: #777;
+                margin-top: 8px;
+            }<br><br>
+            /* === STYLE UNTUK MUSIC PLAYER === */<br>
+            .music-player {<br>
+                position: fixed;<br>
+                bottom: 25px;<br>
+                right: 25px;<br>
+                width: 280px;<br>
+                background-color: rgba(44, 44, 44, 0.85);<br>
+                backdrop-filter: blur(12px);<br>
+                border-radius: 20px;<br>
+                padding: 15px;<br>
+                display: flex;<br>
+                align-items: center;<br>
+                gap: 15px;<br>
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);<br>
+                border: 1px solid rgba(255, 255, 255, 0.1);<br>
+                z-index: 2000;<br>
+                /* transform: translateX(120%); */
+                /* BARIS INI DIHAPUS */<br>
+                /* opacity: 0; */
+                /* BARIS INI DIHAPUS */<br>
+                transition: transform 0.5s ease-out, opacity 0.5s ease-out;<br>
+            }<br><br>
+            /* Kelas ini tidak lagi diperlukan karena player selalu terlihat */<br>
+            /* .music-player.visible { ... } */<br><br>
+            .album-art {<br>
+                width: 50px;<br>
+                height: 50px;<br>
+                background: var(--card-bg-color);<br>
+                border-radius: 50%;<br>
+                display: flex;<br>
+                justify-content: center;<br>
+                align-items: center;<br>
+                font-size: 1.5rem;<br>
+                color: var(--primary-color);<br>
+                flex-shrink: 0;<br>
+            }<br><br>
+            .song-details {<br>
+                flex-grow: 1;<br>
+                overflow: hidden;<br>
+            }<br>
+            <br>
+            .song-details .song-title {<br>
+                font-size: 0.9rem;<br>
+                font-weight: 600;<br>
+                color: var(--primary-light);<br>
+                white-space: nowrap;<br>
+            }<br><br>
+            .progress-bar {<br>
+                background-color: #555;<br>
+                height: 4px;<br>
+                border-radius: 2px;<br>
+                margin-top: 8px;<br>
+                cursor: default;<br>
+            }<br><br>
+            .progress {<br>
+                background-color: var(--primary-color);<br>
+                height: 100%;<br>
+                width: 0%;<br>
+                border-radius: 2px;<br>
+                transition: width 0.1s linear;<br>
+            }<br><br>
+            .music-player .controls {<br>
+                display: flex;<br>
+                align-items: center;<br>
+            }<br><br>
+            #play-pause-btn {<br>
+                background: transparent;<br>
+                border: none;<br>
+                cursor: pointer;<br>
+                color: white;<br>
+                font-size: 1.8rem;<br>
+                width: 40px;<br>
+                height: 40px;<br>
+                display: flex;<br>
+                justify-content: center;<br>
+                align-items: center;<br>
+                transition: transform 0.2s ease;<br>
+            }<br>
+            #play-pause-btn:hover {<br>
+                transform: scale(1.1);<br>
+                color: var(--primary-light);<br>
+            }<br><br>
+            .music-player .fa-pause {
+                display: none;
+            }<br>
+            .music-player.playing .fa-play {
+                display: none;
+            }<br>
+            .music-player.playing .fa-pause {
+                display: block;
+            }<br>
+            <br>
+            @media (max-width: 768px) {
+                .navbar .nav-links {
+                    display: none;
+                    flex-direction: column;
+                    width: 100%;
+                    position: absolute;
+                    top: var(--header-height);
+                    left: 0;
+                    background-color: var(--bg-color);
+                    text-align: center;
+                    border-top: 1px solid #3a3a3a;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+                }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+                .navbar .nav-links.active {
+                    display: flex;
+                }
 
-        .container { max-width: 1100px; margin: auto; padding: 0 2rem; overflow: hidden; }
-        section { padding: 80px 0; border-bottom: 1px solid #333; }
-        section:last-of-type { border-bottom: none; }
-        h1, h2 { color: var(--primary-color); margin-bottom: 25px; font-weight: 700; }
-        h2 { font-size: 2.5rem; text-align: center; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; left: 0; background-color: rgba(26, 26, 26, 0.95); backdrop-filter: blur(12px); height: var(--header-height); padding: 0 2rem; z-index: 1000; border-bottom: 1px solid #3d3d3d; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); }
-        .navbar .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
-        .navbar .nav-links { list-style: none; display: flex; }
-        .navbar .nav-links li { margin-left: 35px; }
-        .navbar .nav-links a { color: var(--text-color); text-decoration: none; font-size: 1.05rem; font-weight: 400; transition: color 0.3s ease, transform 0.2s ease; position: relative; padding-bottom: 5px; }
-        .navbar .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; background-color: var(--primary-color); left: 0; bottom: 0; transition: width 0.3s ease; }
-        .navbar .nav-links a:hover::after { width: 100%; }
-        .navbar .nav-links a:hover { color: var(--primary-light); transform: translateY(-2px); }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
-        .hamburger .bar { width: 100%; height: 3px; background-color: var(--text-color); border-radius: 5px; transition: all 0.3s ease-in-out; }
-        #home { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100vh; position: relative; overflow: hidden; background-image: url('P2.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
-        #home::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); z-index: 1; }
-        #home::after { content: ''; position: absolute; bottom: -70px; right: -70px; width: 180px; height: 180px; background: rgba(0, 153, 255, 0.1); border-radius: 50%; filter: blur(80px); z-index: 2; animation: pulse 5s infinite alternate-reverse ease-in-out; }
-        @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.7; } 100% { transform: scale(1.1); opacity: 1; } }
-        #home .container { position: relative; z-index: 3; }
-        #home h1 { font-size: 3.8rem; margin-bottom: 1.5rem; line-height: 1.2; text-shadow: 0 0 15px var(--primary-color), 0 0 30px rgba(0, 153, 255, 0.3); }
-        #home p { font-size: 1.3rem; max-width: 700px; font-weight: 300; color: #ccc; }
-        #anggota { background-color: #1f1f1f; }
-        #anggota .anggota-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .anggota-card { background-color: var(--card-bg-color); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid #3a3a3a; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
-        .anggota-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 153, 255, 0.05)); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 0; }
-        .anggota-card:hover::before { transform: translateY(0); }
-        .anggota-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 30px rgba(0, 153, 255, 0.2), 0 0 40px rgba(0, 153, 255, 0.1); }
-        .anggota-card h3 { color: var(--primary-light); margin-bottom: 8px; font-size: 1.4rem; font-weight: 600; position: relative; z-index: 1; }
-        .anggota-card p { font-size: 1.05rem; color: #bbb; position: relative; z-index: 1; }
-        #list-tugas .tugas-container { text-align: center; padding-top: 40px; }
-        #list-tugas p { font-size: 1.15rem; color: #ccc; margin-bottom: 30px; }
-        .btn-tugas { display: inline-block; background: linear-gradient(45deg, var(--primary-color), var(--primary-light)); color: var(--bg-color); padding: 18px 35px; text-decoration: none; font-size: 1.2rem; font-weight: 600; border-radius: 8px; margin: 15px; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); border: none; box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4); position: relative; overflow: hidden; z-index: 1; }
-        .btn-tugas::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.2); transform: skewX(-30deg); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: -1; }
-        .btn-tugas:hover::before { left: 100%; }
-        .btn-tugas:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 25px rgba(0, 153, 255, 0.6); color: white; }
-        .footer { background-color: #222; color: #aaa; text-align: center; padding: 30px 0; border-top: 1px solid #3a3a3a; font-size: 0.95rem; }
-        .footer p { margin: 5px 0; }
-        .footer .sub-text { font-size: 0.85rem; color: #777; margin-top: 8px; }
+                .navbar .nav-links li {
+                    margin: 15px 0;
+                }
 
-        /* === STYLE UNTUK MUSIC PLAYER === */
-        .music-player {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 280px;
-            background-color: rgba(44, 44, 44, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 2000;
-            /* transform: translateX(120%); */ /* BARIS INI DIHAPUS */
-            /* opacity: 0; */                  /* BARIS INI DIHAPUS */
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-        }
+                .navbar .nav-links a {
+                    padding: 10px 0;
+                }
 
-        /* Kelas ini tidak lagi diperlukan karena player selalu terlihat */
-        /* .music-player.visible { ... } */
+                .navbar .nav-links a::after {
+                    height: 1px;
+                    bottom: 3px;
+                }
 
-        .album-art {
-            width: 50px;
-            height: 50px;
-            background: var(--card-bg-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
+                .hamburger {
+                    display: flex;
+                }
 
-        .song-details {
-            flex-grow: 1;
-            overflow: hidden;
-        }
-        
-        .song-details .song-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--primary-light);
-            white-space: nowrap;
-        }
+                .hamburger.toggle .bar:nth-child(1) {
+                    transform: rotate(-45deg) translate(-5px, 6px);
+                }
 
-        .progress-bar {
-            background-color: #555;
-            height: 4px;
-            border-radius: 2px;
-            margin-top: 8px;
-            cursor: default;
-        }
+                .hamburger.toggle .bar:nth-child(2) {
+                    opacity: 0;
+                }
 
-        .progress {
-            background-color: var(--primary-color);
-            height: 100%;
-            width: 0%;
-            border-radius: 2px;
-            transition: width 0.1s linear;
-        }
+                .hamburger.toggle .bar:nth-child(3) {
+                    transform: rotate(45deg) translate(-5px, -6px);
+                }
 
-        .music-player .controls {
-            display: flex;
-            align-items: center;
-        }
+                #home h1 {
+                    font-size: 2.5rem;
+                }
 
-        #play-pause-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: white;
-            font-size: 1.8rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.2s ease;
-        }
-        #play-pause-btn:hover {
-            transform: scale(1.1);
-            color: var(--primary-light);
-        }
+                #home p {
+                    font-size: 1.1rem;
+                }
 
-        .music-player .fa-pause { display: none; }
-        .music-player.playing .fa-play { display: none; }
-        .music-player.playing .fa-pause { display: block; }
-        
-        @media (max-width: 768px) { .navbar .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: var(--header-height); left: 0; background-color: var(--bg-color); text-align: center; border-top: 1px solid #3a3a3a; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); } .navbar .nav-links.active { display: flex; } .navbar .nav-links li { margin: 15px 0; } .navbar .nav-links a { padding: 10px 0; } .navbar .nav-links a::after { height: 1px; bottom: 3px; } .hamburger { display: flex; } .hamburger.toggle .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); } .hamburger.toggle .bar:nth-child(2) { opacity: 0; } .hamburger.toggle .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); } #home h1 { font-size: 2.5rem; } #home p { font-size: 1.1rem; } h2 { font-size: 2rem; } .btn-tugas { padding: 15px 25px; font-size: 1.05rem; } }
-        @media (max-width: 480px) { .navbar .logo { font-size: 1.5rem; } #home h1 { font-size: 2rem; } #home p { font-size: 0.95rem; } h2 { font-size: 1.8rem; } .btn-tugas { width: 90%; margin: 10px auto; display: block; } .music-player { width: auto; max-width: 250px; padding: 8px 15px; gap: 10px; bottom: 15px; right: 15px; } .album-art { width: 40px; height: 40px; font-size: 1.2rem; } .song-details .song-title { font-size: 0.8rem; } #play-pause-btn { width: 35px; height: 35px; font-size: 1.5rem; } }
+                h2 {
+                    font-size: 2rem;
+                }
 
-    </style>
-</head>
-<body>
+                .btn-tugas {
+                    padding: 15px 25px;
+                    font-size: 1.05rem;
+                }
+            }<br>
+            @media (max-width: 480px) {
+                .navbar .logo {
+                    font-size: 1.5rem;
+                }
 
-    <header>
-        <nav class="navbar">
-            <a href="#home" class="logo">P2 Boyyy</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#list-tugas">List Tugas Proyek</a></li>
-                <li><a href="#anggota">Nama Anggota</a></li>
-            </ul>
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </nav>
-    </header>
+                #home h1 {
+                    font-size: 2rem;
+                }
 
-    <main>
-        <section id="home">
-            <div class="container">
-                <h1>Kumpulan Tugas Kelompok - P2 Boyyy</h1>
-            </div>
-        </section>
+                #home p {
+                    font-size: 0.95rem;
+                }
 
-        <section id="list-tugas">
-            <div class="container tugas-container">
-                <h2>Jelajahi Karya Tugas Proyek Kami</h2>
-                <p>Berikut adalah koleksi tautan menuju tugas-tugas proyek yang telah kami ciptakan dan kembangkan:</p>
-                <div style="margin-top: 30px;">
-                    <a href="https://p2boyyy.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas CV</a>
-                    <a href="https://soalessayuts.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas Soal Essay UTS</a>
-                </div>
-            </div>
-        </section>
-        
-        <section id="anggota">
-            <div class="container">
-                <h2>Anggota Kelompok P2 Boyyy</h2>
-                <div class="anggota-grid">
-                    <div class="anggota-card"><h3>Abdul Rohman</h3><p>NIM: 43240329</p></div>
-                    <div class="anggota-card"><h3>Dikri Fauzan Anawawi</h3><p>NIM: 43240366</p></div>
-                    <div class="anggota-card"><h3>Muhammad Hisyam Nudin</h3><p>NIM: 43240455</p></div>
-                    <div class="anggota-card"><h3>Muhammad Zhaky Albaihaqy</h3><p>NIM: 43240411</p></div>
-                    <div class="anggota-card"><h3>Tio Pramudya Berliana</h3><p>NIM: 43240444</p></div>
-                    <div class="anggota-card"><h3>Tion Hermawan</h3><p>NIM: 43240445</p></div>
-                    <div class="anggota-card"><h3>Zacky Muhammad Dinata</h3><p>NIM: 43240450</p></div>
-                </div>
-            </div>
-        </section>
+                h2 {
+                    font-size: 1.8rem;
+                }
 
-    </main>
+                .btn-tugas {
+                    width: 90%;
+                    margin: 10px auto;
+                    display: block;
+                }
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 P2 Boyyy - Sistem Informasi 2024 KIP P2</p>
-            <p class="sub-text">Mata Kuliah Pemrograman Web Dasar.</p>
-            <p class="sub-text">Semua hak cipta tugas dan konten dilindungi oleh kelompok P2 Boyyy.</p>
-        </div>
-    </footer>
+                .music-player {
+                    width: auto;
+                    max-width: 250px;
+                    padding: 8px 15px;
+                    gap: 10px;
+                    bottom: 15px;
+                    right: 15px;
+                }
 
-    <audio id="background-music" src="KasihAbaAba.mp3" loop></audio>
-    <div class="music-player" id="music-player-container">
-        <div class="album-art">
-            <i class="fas fa-music"></i>
-        </div>
-        <div class="song-details">
-            <p class="song-title">Kasih Aba Aba</p>
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-        </div>
-        <div class="controls">
-            <button id="play-pause-btn">
-                <i class="fas fa-play"></i>
-                <i class="fas fa-pause"></i>
-            </button>
-        </div>
-    </div>
-    <script>
-        // Hamburger Menu Script
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('toggle');
-        });
-        document.querySelectorAll('.nav-links li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('toggle');
-            });
-        });
+                .album-art {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.2rem;
+                }
 
-        // === JAVASCRIPT UNTUK MUSIC PLAYER ===
-        const musicPlayer = document.getElementById('music-player-container');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const audio = document.getElementById('background-music');
-        const progressBar = document.getElementById('progress');
+                .song-details .song-title {
+                    font-size: 0.8rem;
+                }
 
-        // Fungsi untuk memulai musik (hanya sekali setelah interaksi pertama)
-        const startMusic = () => {
-            audio.play().then(() => {
-                musicPlayer.classList.add('playing');
-            }).catch(error => {
-                console.log("Autoplay dicegah oleh browser. Perlu klik manual.", error);
-            });
-        };
-        
-        // Coba mainkan musik setelah interaksi pertama dari user
-        document.addEventListener('click', startMusic, { once: true });
-        
-        // Fungsi Play/Pause saat tombol diklik
-        playPauseBtn.addEventListener('click', () => {
-            const isPlaying = musicPlayer.classList.contains('playing');
-            if (isPlaying) {
-                audio.pause();
-            } else {
-                audio.play();
-            }
-            // Class 'playing' akan di-handle oleh event listener 'play' dan 'pause' di bawah
-        });
-        
-        // Update progress bar saat musik berjalan
-        audio.addEventListener('timeupdate', () => {
-            // Cek jika durasi valid sebelum membagi
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progressPercent}%`;
-            }
-        });
-        
-        // Sinkronisasi UI dengan status audio
-        audio.addEventListener('play', () => musicPlayer.classList.add('playing'));
-        audio.addEventListener('pause', () => musicPlayer.classList.remove('playing'));
-    </script>
+                #play-pause-btn {
+                    width: 35px;
+                    height: 35px;
+                    font-size: 1.5rem;
+                }
+            }<br><br>
+        </style><br>
+    </head><br>
 
-</body>
-</html>
+    <body><br><br>
+        <header><br>
+            <nav class="navbar"><br>
+                <a href="#home" class="logo">P2 Boyyy</a><br>
+                <ul class="nav-links"><br>
+                    <li><a href="#home">Home</a></li><br>
+                    <li><a href="#list-tugas">List Tugas Proyek</a></li><br>
+                    <li><a href="#anggota">Nama Anggota</a></li><br>
+                </ul><br>
+                <div class="hamburger"><br>
+                    <div class="bar"></div><br>
+                    <div class="bar"></div><br>
+                    <div class="bar"></div><br>
+                </div><br>
+            </nav><br>
+        </header><br><br>
+        <main><br>
+            <section id="home"><br>
+                <div class="container"><br>
+                    <h1>Kumpulan Tugas Kelompok - P2 Boyyy</h1><br>
+                </div><br>
+            </section><br><br>
+            <section id="list-tugas"><br>
+                <div class="container tugas-container"><br>
+                    <h2>Jelajahi Karya Tugas Proyek Kami</h2><br>
+                    <p>Berikut adalah koleksi tautan menuju tugas-tugas proyek yang telah kami ciptakan dan kembangkan:</p><br>
+                    <br>
+                    <br>
+                    <div class="tugas-subsection"><br>
+                        <h3>Pra-UTS</h3><br>
+                        <a href="https://p2boyyy.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas CV</a><br>
+                        <a href="https://soalessayuts.fwh.is/" target="_blank" class="btn-tugas">Lihat Tugas Soal Essay UTS</a><br>
+                    </div><br><br>
+                    <div class="tugas-subsection"><br>
+                        <h3>Pra-UAS</h3><br>
+                        <a href="#" target="_blank" class="btn-tugas btn-tugas-gold">Tugas Database Perpustakaan</a><br>
+                    </div><br>
+                    <br>
+                </div><br>
+            </section><br>
+            <br>
+            <section id="anggota"><br>
+                <div class="container"><br>
+                    <h2>Anggota Kelompok P2 Boyyy</h2><br>
+                    <div class="anggota-grid"><br>
+                        <div class="anggota-card">
+                            <h3>Abdul Rohman</h3>
+                            <p>NIM: 43240329</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Dikri Fauzan Anawawi</h3>
+                            <p>NIM: 43240366</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Muhammad Hisyam Nudin</h3>
+                            <p>NIM: 43240455</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Muhammad Zhaky Albaihaqy</h3>
+                            <p>NIM: 43240411</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Tio Pramudya Berliana</h3>
+                            <p>NIM: 43240444</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Tion Hermawan</h3>
+                            <p>NIM: 43240445</p>
+                        </div><br>
+                        <div class="anggota-card">
+                            <h3>Zacky Muhammad Dinata</h3>
+                            <p>NIM: 43240450</p>
+                        </div><br>
+                    </div><br>
+                </div><br>
+            </section><br><br>
+        </main><br><br>
+        <footer class="footer"><br>
+            <div class="container"><br>
+                <p>&copy; 2024 P2 Boyyy - Sistem Informasi 2024 KIP P2</p><br>
+                <p class="sub-text">Mata Kuliah Pemrograman Web Dasar.</p><br>
+                <p class="sub-text">Semua hak cipta tugas dan konten dilindungi oleh kelompok P2 Boyyy.</p><br>
+            </div><br>
+        </footer><br><br>
+        <audio id="background-music" src="KasihAbaAba.mp3" loop></audio><br>
+        <div class="music-player" id="music-player-container"><br>
+            <div class="album-art"><br>
+                <i class="fas fa-music"></i><br>
+            </div><br>
+            <div class="song-details"><br>
+                <p class="song-title">Kasih Aba Aba</p><br>
+                <div class="progress-bar"><br>
+                    <div class="progress" id="progress"></div><br>
+                </div><br>
+            </div><br>
+            <div class="controls"><br>
+                <button id="play-pause-btn"><br>
+                    <i class="fas fa-play"></i><br>
+                    <i class="fas fa-pause"></i><br>
+                </button><br>
+            </div><br>
+        </div><br>
+        <script><br>
+            // Hamburger Menu Script<br>
+            const hamburger = document.querySelector('.hamburger');<br>
+            const navLinks = document.querySelector('.nav-links');<br>
+            hamburger.addEventListener('click', () => {<br>
+                navLinks.classList.toggle('active');<br>
+                hamburger.classList.toggle('toggle');<br>
+            });<br>
+            document.querySelectorAll('.nav-links li a').forEach(link => {<br>
+                link.addEventListener('click', () => {<br>
+                    navLinks.classList.remove('active');<br>
+                    hamburger.classList.remove('toggle');<br>
+                });<br>
+            });<br><br>
+            // === JAVASCRIPT UNTUK MUSIC PLAYER ===<br>
+            const musicPlayer = document.getElementById('music-player-container');<br>
+            const playPauseBtn = document.getElementById('play-pause-btn');<br>
+            const audio = document.getElementById('background-music');<br>
+            const progressBar = document.getElementById('progress');<br><br>
+            // Fungsi untuk memulai musik (hanya sekali setelah interaksi pertama)<br>
+            const startMusic = () => {<br>
+                audio.play().then(() => {<br>
+                    musicPlayer.classList.add('playing');<br>
+                }).catch(error => {<br>
+                    console.log("Autoplay dicegah oleh browser. Perlu klik manual.", error);<br>
+                });<br>
+            };<br>
+            <br>
+            // Coba mainkan musik setelah interaksi pertama dari user<br>
+            document.addEventListener('click', startMusic, {
+                once: true
+            });<br>
+            <br>
+            // Fungsi Play/Pause saat tombol diklik<br>
+            playPauseBtn.addEventListener('click', () => {<br>
+                const isPlaying = musicPlayer.classList.contains('playing');<br>
+                if (isPlaying) {<br>
+                    audio.pause();<br>
+                } else {<br>
+                    audio.play();<br>
+                }<br>
+                // Class 'playing' akan di-handle oleh event listener 'play' dan 'pause' di bawah<br>
+            });<br>
+            <br>
+            // Update progress bar saat musik berjalan<br>
+            audio.addEventListener('timeupdate', () => {<br>
+                // Cek jika durasi valid sebelum membagi<br>
+                if (audio.duration) {<br>
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;<br>
+                    progressBar.style.width = `${progressPercent}%`;<br>
+                }<br>
+            });<br>
+            <br>
+            // Sinkronisasi UI dengan status audio<br>
+            audio.addEventListener('play', () => musicPlayer.classList.add('playing'));<br>
+            audio.addEventListener('pause', () => musicPlayer.classList.remove('playing'));<br>
+        </script><br><br>
+    </body><br>
 
+    </html><br><br>
+    <id="textarea-placeholder-break">
+</div>
